@@ -1,0 +1,120 @@
+
+select{
+    margin-bottom: 5%;
+}
+.invisible{
+    visibility: hidden;
+}
+.namebar{
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    font-size: 200%;
+    background: #a8a8a8;
+}
+.typeOfLabour{
+    display: block;
+    visibility: visible;
+    margin-bottom: 0%;
+    font-size: 80%;
+}
+table{
+    margin-bottom: 0px;
+}
+
+.submitbtn{
+    position: absolute;
+    font-size: 120%;
+    margin-top: -15%;
+    margin-bottom: 25%;
+    margin-left: 97%;
+    width: 18%;
+    height: 4%;
+    border: 0px;
+    color: #ffffff;
+    background-color: #a8a8a8;
+}
+.bkbtn{
+    float: right;
+    margin-right: 0%;
+    padding: 0% 1%;
+    border-radius: 5%;
+    border: 0px;
+    color: #ffffff;
+    background-color: #a8a8a8;
+}
+.bkbtn:hover, .bkbtn:active{
+    background: #575457;
+    text-decoration: none;
+    color: white;
+}
+
+#selectContractor{
+    margin-bottom: 10%;
+}
+#id_ContractorName, #id_LabourCategory{
+    display: inline;
+    position: absolute;
+    font-size: 120%;
+    width: 29.5%;
+    margin-top:-15%;
+}
+#id_LabourCategory{
+    margin-left: 30%;
+    width: 25%;
+}
+#id_NoLabor, #id_NoHelp{
+    position: absolute;
+    display:inline;
+    font-size: 120%;
+    width: 20.5%;
+    margin-top: -15%;
+    margin-left: 55.5% ;
+}
+#id_NoHelp{
+    width: 20%;
+    margin-top: -15%;
+    margin-left: 76% ;
+}
+#navbar{
+    overflow: hidden;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    font-size: 200%;
+    background: #a8a8a8;
+}
+#date{
+    display: inline;
+    margin-left: 2%;
+}
+#extra{
+    margin-top: 0%;
+    margin-left: 30%;
+    float: bottom;
+    visibility: hidden;
+}
+#display {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin-top: 15%;
+  margin-bottom:0%;
+  width: 100%;
+}
+
+#display td, #display th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#display tr:nth-child(even){background-color: #f2f2f2;}
+
+#display tr:hover {background-color: #ddd;}
+
+#display th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(170, 170, 170);
+  color: white;
+}

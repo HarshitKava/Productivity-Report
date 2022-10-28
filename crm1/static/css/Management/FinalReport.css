@@ -1,0 +1,139 @@
+body
+{
+    background-image: url(https://www.urcindia.com/img/new_logo.svg);
+    background-repeat:no-repeat;
+    background-position: 50% 15%;
+    background-size: 40%;
+    height: 844px;
+}
+button:hover {
+    background: #575457;
+    text-decoration: none;
+}
+input{
+    font-size: 120%;
+    background-color:#d7d5d5;
+}
+form{
+    position: absolute;
+    font-size: 200%;
+    margin-top: 50%;
+    margin-left: 5%;
+}
+
+.bkbtn{
+    float: right;
+    margin-right: 2%;
+    border: 0px;
+    color: #ffffff;
+    background-color: #a8a8a8;
+}
+.submitbtn{
+    margin-top: 10%; 
+    margin-left: 230px; 
+    margin-right: 0px;
+    border-radius: 5%;
+    color: #ffffff;
+    background-color: #a8a8a8;
+    box-shadow: 5px 4px 8px #b8b8b8;
+}
+.submitbtn:hover {
+    background: #575457;
+    text-decoration: none;
+}
+.namebar{
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    font-size: 200%;
+    background: #a8a8a8;
+}
+#navbar{
+    overflow: hidden;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    font-size: 200%;
+    background: #a8a8a8;
+}
+#date{
+    display: inline;
+    margin-left: 2%;
+}
+#daten{
+    width:65%;
+    display: inline;
+    margin-left: 2%;
+}
+@media only screen and (min-width: 600px) {
+    /* for desktop*/
+    body
+    {
+        background-image: url(https://www.urcindia.com/img/new_logo.svg);
+        background-repeat:no-repeat;
+        background-position: 53% 15%;
+        background-size: 20%;
+        height: 700px;
+    }
+    button:hover {
+        background: #575457;
+        text-decoration: none;
+    }
+    input{
+        font-size: 120%;
+        background-color:#d7d5d5;
+    }
+    form{
+        position: absolute;
+        font-size: 180%;
+        margin-top: 18%;
+        margin-left: 40%;
+    }
+
+    .bkbtn{
+        float: right;
+        margin-right: 2%;
+        border: 0px;
+        color: #ffffff;
+        background-color: #a8a8a8;
+    }
+    .submitbtn{
+        display: block;
+        margin-top: -18%;
+        margin-left: 113%;
+        margin-right: 0%;
+        border-radius: 5%;
+        color: #ffffff;
+        background-color: #a8a8a8;
+        box-shadow: 5px 4px 8px #b8b8b8;
+    }
+    .submitbtn:hover {
+        background: #575457;
+        text-decoration: none;
+    }
+    .namebar{
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        font-size: 200%;
+        background: #a8a8a8;
+    }
+    #navbar{
+        overflow: hidden;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        font-size: 200%;
+        background: #a8a8a8;
+    }
+    #date{
+        display: inline;
+        margin-left: 2%;
+    }
+    #daten{
+        width: 85%;
+        display: inline;
+        margin-left: 0%;
+    }
+
+}

@@ -1,0 +1,139 @@
+body
+{
+    background-image: url(https://www.urcindia.com/img/new_logo.svg);
+    background-repeat:no-repeat;
+    background-position: 50% 15%;
+    background-size: 40%;
+    height: 844px;
+}
+button:hover {
+    background: #575457;
+    text-decoration: none;
+}
+input{
+    font-size: 120%;
+    background-color:#d7d5d5;
+}
+form{
+    position: absolute;
+    margin-top: 50%;
+    margin-left: 5%;
+}
+
+.bkbtn{
+    float: right;
+    margin-right: 2%;
+    border: 0px;
+    color: #ffffff;
+    background-color: #a8a8a8;
+}
+.submitbtn{
+    font-size: 170%;
+    float: right;
+    margin-top: 155%;
+    margin-right: 8%;
+    border-radius: 5%;
+    color: #ffffff;
+    background-color: #a8a8a8;
+}
+.namebar{
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    font-size: 200%;
+    background: #a8a8a8;
+}
+
+#errormsg{
+    margin-top: 10%;
+    margin-right: 8%;
+    font-size: 130%;
+}
+#navbar{
+    overflow: hidden;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    font-size: 200%;
+    background: #a8a8a8;
+}
+#date{
+    display: inline;
+    margin-left: 2%;
+}
+@media only screen and (min-width: 600px) {
+    body
+    {
+        background-image: url(https://www.urcindia.com/img/new_logo.svg);
+        background-repeat:no-repeat;
+        background-position: 50% 15%;
+        background-size: 20%;
+        height: 700px;
+    }
+    a:hover {
+        background: #575457;
+        text-decoration: none;
+        color: #ffffff;
+    }
+    input{
+        font-size: inherit;
+        background-color:#d7d5d5;
+    }
+    form{
+        position: absolute;
+        top: 40%;
+        left: 41%;
+        font-size: 140%;
+        margin-top: 0%;
+        margin-left: 0%;
+        
+    }
+
+    .bkbtn{
+        float: right;
+        padding-left: 1%;
+        padding-right: 1%;
+        margin-right: 0%;
+        border: 0px;
+        color: #ffffff;
+        background-color: #a8a8a8;
+        border-radius: 5px;
+    }
+    .submitbtn{
+        font-size: inherit;
+        float: none;
+        position: absolute;
+        top: 120%;
+        left: 34%;
+        margin-top: 0%;
+        margin-right: 0%;
+        border-radius: 5%;
+        color: #ffffff;
+        background-color: #a8a8a8;
+    }
+    .namebar{
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        font-size: 200%;
+        background: #a8a8a8;
+    }
+
+    #errormsg{
+        margin-top: 10%;
+        margin-right: 8%;
+        font-size: 130%;
+    }
+    #navbar{
+        overflow: hidden;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        font-size: 200%;
+        background: #a8a8a8;
+    }
+    #date{
+        display: inline;
+        margin-left: 1%;
+    }
+}
