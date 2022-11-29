@@ -28,19 +28,6 @@ form{
     color: #ffffff;
     background-color: #a8a8a8;
 }
-.submitbtn{
-    margin-top: 10%; 
-    margin-left: 230px; 
-    margin-right: 0px;
-    border-radius: 5%;
-    color: #ffffff;
-    background-color: #a8a8a8;
-    box-shadow: 5px 4px 8px #b8b8b8;
-}
-.submitbtn:hover {
-    background: #575457;
-    text-decoration: none;
-}
 .namebar{
     overflow: hidden;
     position: absolute;
@@ -56,12 +43,13 @@ form{
     font-size: 200%;
     background: #a8a8a8;
 }
-#date{
-    display: inline;
-    margin-left: 2%;
-}
 #daten{
-    width:65%;
+    width: 100% ;
+    display: inline;
+    margin-left: 0%;
+}
+#date{
+    width: 65% ;
     display: inline;
     margin-left: 2%;
 }
@@ -85,31 +73,141 @@ form{
     }
     form{
         position: absolute;
-        font-size: 180%;
-        margin-top: 18%;
-        margin-left: 40%;
+        margin-top: 12%;
+        margin-left: 42%;
+        width: 20%;
     }
 
     .bkbtn{
         float: right;
-        margin-right: 2%;
+        margin-right: 1%;
         border: 0px;
         color: #ffffff;
         background-color: #a8a8a8;
     }
-    .submitbtn{
-        display: block;
-        margin-top: -18%;
-        margin-left: 113%;
-        margin-right: 0%;
-        border-radius: 5%;
-        color: #ffffff;
-        background-color: #a8a8a8;
-        box-shadow: 5px 4px 8px #b8b8b8;
+    .input-container.select label{
+        position:relative;
+        float: left;
+        font-size:100%;
+        color:#008837;
+        transition: all 0.5s ease-in-out;
     }
-    .submitbtn:hover {
-        background: #575457;
-        text-decoration: none;
+    .input-container select{ 
+        display: block;
+          border:0;
+          width: 100%;
+          border-bottom:2px solid #015099;  
+          background:transparent;
+          padding:8px 0 5px 0;
+          box-shadow: none;
+          font-size:16px;
+          color:#015099;
+          border-radius: 0px;
+        }
+    .input-container.select select option{
+        color: #008837;
+    }
+    .input-container.select select:hover, .input-container input:hover{
+        animation: hover forwards 0.7s;
+    }
+    @keyframes hover {
+        50%{
+            border-color:#008837;
+            scale: 1.1;
+        }
+        100%{
+            border-color:#015099;
+            scale: 1;
+        }
+    }
+    .input-container{
+        position:relative;
+        margin-top: 10%;
+        width: 100%;
+    }
+    .input-container label{
+        position:absolute;
+        top:0px;
+        left:0px;
+        font-size:100%;
+        color:#008837;
+        transition: all 0.5s ease-in-out;
+    }
+    .input-container input{ 
+      border:0;
+      width: 200%;
+      border-bottom:2px solid #015099;  
+      background:transparent;
+      padding:8px 0 5px 0;
+      margin-top: 6%;
+      font-size:16px;
+      color:#015099;
+    }
+   
+    .input-container input:focus{ 
+        border:none;	
+        outline:none;
+        border-bottom:2px solid #015099;
+    }
+    .input-container input:focus ~ label,
+    .input-container input:valid ~ label{
+        top:-15px;
+        font-size:30px;
+        
+        
+    }
+    .submitbtn{
+        position: relative;
+        top: 2rem;
+        font-size: 100%;
+        border:0px;
+        color: #008837;
+        background-color: #ffffff;
+        animation: zoomout 0.5s forwards ;
+        margin-left: 0px;
+    }
+    .submitbtn:hover{
+        animation: zoomin 0.5s forwards ;
+        
+    }
+    input[type=date]:required:invalid::-webkit-datetime-edit {
+        color: transparent;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+    @keyframes zoomin {
+        100% {
+            color: #008837;
+            border-color: #015099;
+            border-radius: 0%;
+            border-bottom: 2px solid #015099;
+            /* background-color: #015099; */
+            /* box-shadow: 0 0 5px 0 #015099; */
+        }
+        0%{
+            color: #008837;
+        }
+    }
+    @keyframes zoomout {
+        100% {
+            color: #008837;
+        }
+        0% {
+            color: #008837;
+            border-color: #015099;
+            border-radius: 0%;
+            border-bottom: 2px solid #015099;
+        }
     }
     .namebar{
         overflow: hidden;
@@ -126,14 +224,14 @@ form{
         font-size: 200%;
         background: #a8a8a8;
     }
-    #date{
-        display: inline;
-        margin-left: 2%;
-    }
     #daten{
-        width: 85%;
+        width:100%;
         display: inline;
         margin-left: 0%;
     }
-
+    #date{
+        width: 65% ;
+        display: inline;
+        margin-left: 1%;
+    }
 }

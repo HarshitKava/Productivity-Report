@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.LoginPage,name="Login"),
     path('Logout/', views.LogoutUser,name="Logout"),
+    path('Navbar/',views.Navbar,name="Navbar" ),
 
     #password reset
     path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),#template_name="LabourReport/password_reset.html"
@@ -18,6 +19,7 @@ urlpatterns = [
     path('LabourOfContractor/', views.LaboursOfContractor,name="LabourOfContractor"),
     path('ResetPassword/', views.ResetPassword,name="ResetPassword"),
     path('ajax-load-Labour/', views.load_labour,name="ajax_load_labour"),
+    path('ajax-load-cat/', views.load_cat,name="ajax_load_cat"),
 
     path('SE/', views.HomeSE,name="HomeSE"),
     path('AddDaySE/', views.AddDaySE,name="AddDaySE"),

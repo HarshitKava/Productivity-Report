@@ -1,24 +1,13 @@
+{% extends 'ProductivityReport/NavbarPR.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>URC Construction</title>
-        <link rel="icon" type="image/x-icon" href="https://www.urcindia.com/img/favicon.ico">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% block css %}
         <link rel="stylesheet" href="{% static '/css/SiteEngAddProRepo.css' %}">
-    </head>
-  <body>
-    <nav style="z-index: 1; top:0px;" class="namebar" ><p style="display: inline;" id="nam">{{ request.user }}</p><p style="display: inline;" id="area"></p><div id="ar_id" style="visibility: hidden;display: none;" >{{Areaname_id}}</div></nav>
-    <table id='display' style='font-size:100%; margin-bottom: 10%; margin-top: 5%;'>
-      <tr style="position: sticky; top: 7%; ">
-        <th>Contractor<br>Name</th>
-        <th>Acitvity</th>
-        <th>Category of Deployment</th>
-        <th>Deployment</th>
+{% endblock %}
+{% block LRLink %}<a class="nav-link " href="{% url 'HomeSE' %}">Labour Report</a>{% endblock %}
+{% block PRLink %}<a class="nav-link active " href="{% url 'HomeSEProRepo' %}">Productivity Report</a>{% endblock %}
+{% block content %}    
+  <table id='display' style='font-size:100%; margin-bottom: 10%; margin-top: 5%;'>
+      <tr style="position: sticky; top: 7%; " >
         <th>Structure</th>
         <th>Length</th>
         <th>Breadth</th>
@@ -28,10 +17,6 @@
       </tr>
       {% for i in Report %}
       <tr>
-        <td>{{i.ContractorName}}</td>
-        <td>{{i.ActivityName}}</td>
-        <td>{{i.CategoryName}}</td>
-        <td>{{i.Deployment}}</td>
         <td>{{i.StructureName}}</td>
         <td>{{i.Length}}</td>
         <td>{{i.Breadth}}</td>
@@ -44,12 +29,7 @@
     <form action="" id="form" method="POST" data-labour-ProRepo-url="{% url 'ajax_load_ProRepo_labour' %}" data-category-url="{% url 'ajax_load_category' %}">
       {% csrf_token %}
       <tr>
-        <td style="display: none;">{{Form.Areaname}}</td>
-        <td>{{Form.ContractorName}}</td>
-        <td>{{Form.ActivityName}}</td>
-        <td style="display:none ;" >{{Form.ActivityNameBeta}}</td>
-        <td>{{Form.CategoryName}}</td>
-        <td>{{Form.Deployment}}</td>
+        <td style="display: none;">{{Form.Areaname}}<p id="ar_id" >{{Areaname_id}}</p></td>
         <td>{{Form.StructureName}}</td>
         <td>{{Form.Length}}</td>
         <td>{{Form.Breadth}}</td>
@@ -57,12 +37,15 @@
         <td><span id="quantityinput" style="display: none;">{{Form.Quantity}}</span><span id="quantitystatic" style="display: block;">1</span></td>
         <td><input type="submit" name="submit" class="submitbtn"></td>
       </tr>
-        
     </form>
   </table>
-    <div style="z-index: 1;" id="navbar"><p id="date"></p>
-    <a href="{% url 'HomeSEProRepo' %}" class="bkbtn">Home</a></div>
+  {% endblock %}
+  {% block back %}
+  <a href="{% url 'HomeSEProRepo' %}" class="back">Home</a>
+  {% endblock %}
+  {% block js %}
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="{% static '/js/form.js' %}" async defer></script>
@@ -94,7 +77,6 @@
           $("#id_Quantity").val(quantity);
           $("#quantitystatic").text(quantity);
         });
-        
         $("#id_ContractorName").change(function(){
           $("#depthinput").css("display", "block");
           $("#depthstatic").css("display", "none");
@@ -142,7 +124,12 @@
             });
           
           });
+          
+          
+          
+
+          
         })
+
     </script>
-  </body>
-</html>
+  {% endblock %}

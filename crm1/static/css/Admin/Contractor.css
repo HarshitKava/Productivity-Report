@@ -11,13 +11,19 @@ button:hover {
     text-decoration: none;
 }
 input{
-    font-size: 120%;
-    background-color:#d7d5d5;
+    border: 0px;
+    color: white;
+    background-color:#008837;
 }
-form{
+table{
+    font-size: large;
     position: absolute;
-    margin-top: 50%;
-    margin-left: 5%;
+    top: 30%;
+    left: 5%;
+}
+td{
+
+    padding: 10px;
 }
 
 .bkbtn{
@@ -28,10 +34,8 @@ form{
     background-color: #a8a8a8;
 }
 .submitbtn{
-    font-size: 170%;
-    float: right;
-    margin-top: 155%;
-    margin-right: 8%;
+    border: 0px;
+    font-size: 150%;
     border-radius: 5%;
     color: #ffffff;
     background-color: #a8a8a8;
@@ -75,19 +79,11 @@ form{
         text-decoration: none;
         color: #ffffff;
     }
-    input{
-        font-size: inherit;
-        background-color:#d7d5d5;
-    }
     form{
-        position: absolute;
-        top: 40%;
-        left: 41%;
-        font-size: 140%;
-        margin-top: 0%;
-        margin-left: 0%;
-        
+        position: relative;
+        top: 12rem;
     }
+    
 
     .bkbtn{
         float: right;
@@ -99,17 +95,84 @@ form{
         background-color: #a8a8a8;
         border-radius: 5px;
     }
-    .submitbtn{
-        font-size: inherit;
-        float: none;
-        position: absolute;
-        top: 120%;
-        left: 34%;
-        margin-top: 0%;
-        margin-right: 0%;
-        border-radius: 5%;
-        color: #ffffff;
-        background-color: #a8a8a8;
+    
+    #submitbtn{
+        position: relative;
+        top: 2rem;
+        font-size: 150%;
+        /* border: 3px solid #008837; */
+        color: #008837;
+        background-color: #ffffff;
+        animation: zoomout 0.5s forwards ;
+        
+    }
+    #submitbtn:hover{
+        animation: zoomin 0.5s forwards ;
+        /* delay */
+        
+    }
+    @keyframes zoomin {
+        100% {
+            color: #008837;
+            border-color: #015099;
+            border-radius: 0%;
+            border-bottom: 2px solid #015099;
+            /* background-color: #015099; */
+            /* box-shadow: 0 0 5px 0 #015099; */
+        }
+        0%{
+            color: #008837;
+        }
+    }
+    @keyframes zoomout {
+        100% {
+            color: #008837;
+        }
+        0% {
+            color: #008837;
+            border-color: #015099;
+            border-radius: 0%;
+            border-bottom: 2px solid #015099;
+        }
+    }
+    .input-container{
+        position:relative;
+        margin-top: 3%;
+        width: 25%;
+    }
+    .input-container label{
+        position:absolute;
+        top:0px;
+        left:0px;
+        font-size:150%;
+        color:#008837;
+        transition: all 0.5s ease-in-out;
+    }
+    .input-container input{ 
+      border:0;
+      width: 100%;
+      border-bottom:2px solid #015099;  
+      background:transparent;
+      padding:8px 0 5px 0;
+      
+      font-size:16px;
+      color:#015099;
+    }
+   
+    .input-container input:focus{ 
+        border:none;	
+        outline:none;
+        border-bottom:2px solid #015099;
+    }
+    .input-container input:focus ~ label,
+    .input-container input:valid ~ label{
+        top:-17px;
+        font-size:20px;
+        
+        
+    }
+    input[type="number"]::-webkit-inner-spin-button{
+        appearance: none;
     }
     .namebar{
         overflow: hidden;

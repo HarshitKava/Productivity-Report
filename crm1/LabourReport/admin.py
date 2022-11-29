@@ -4,6 +4,7 @@ from django.contrib import admin
 from .models import *
 
 # admin.site.register(Staff)
+admin.site.register(CategoryOfDeployment)
 admin.site.register(Structure)
 admin.site.register(SiteEngDay)
 admin.site.register(SiteEngNight)

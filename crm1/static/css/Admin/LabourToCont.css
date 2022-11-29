@@ -12,7 +12,6 @@ button:hover {
 }
 input{
     font-size: 120%;
-    width: 130%;
     background-color:#d7d5d5;
 }
 form{
@@ -77,13 +76,6 @@ form{
         background: #575457;
         text-decoration: none;
     }
-    input{
-        border-radius: 5px;
-        border: 1px #000000;
-        font-size: 120%;
-        width: 130%;
-        background-color:#d7d5d5;
-    }
     select{
         border-radius: 5px;
         border: 1px solid #000000;
@@ -113,24 +105,74 @@ form{
         color: #ffffff;
         background-color: #a8a8a8;
     }
+    .input-container.select label{
+        position:relative;
+        float: left;
+        font-size:150%;
+        color:#008837;
+        transition: all 0.5s ease-in-out;
+    }
+    .input-container select{ 
+        display: block;
+          border:0;
+          width: 100%;
+          border-bottom:2px solid #015099;  
+          background:transparent;
+          padding:8px 0 5px 0;
+          box-shadow: none;
+          font-size:16px;
+          color:#015099;
+          border-radius: 0px;
+        }
+    .input-container.select select option{
+        color: #008837;
+    }
+    .input-container.select select:hover{
+        animation: hover forwards 0.5s;
+    }
+    @keyframes hover {
+        100%{
+            background-color: #0088362e;
+            border-color: #008837;
+        }
+    }
     .submitbtn{
-        box-shadow: #575457 0px 0px 10px;
-        margin-top: 0%; 
-        margin-left: 0%; 
-        margin-right: 0px;
-        top: 130%;
-        border: 0px;
-        position: absolute;
-        font-size: 170%;
-        border-radius: 5px;
-        color: #ffffff;
-        background-color: #a8a8a8;
+        position: relative;
+        top: 2rem;
+        font-size: 150%;
+        border:0px;
+        color: #008837;
+        background-color: #ffffff;
+        animation: zoomout 0.5s forwards ;
+        margin-left: 0px;
     }
     .submitbtn:hover{
-        color: #ffffff;
-        background: #4b4b4b;
-        box-shadow: #4b4b4b 0px 0px 10px;
-        text-decoration: none;
+        animation: zoomin 0.5s forwards ;
+        
+    }
+    @keyframes zoomin {
+        100% {
+            color: #008837;
+            border-color: #015099;
+            border-radius: 0%;
+            border-bottom: 2px solid #015099;
+            /* background-color: #015099; */
+            /* box-shadow: 0 0 5px 0 #015099; */
+        }
+        0%{
+            color: #008837;
+        }
+    }
+    @keyframes zoomout {
+        100% {
+            color: #008837;
+        }
+        0% {
+            color: #008837;
+            border-color: #015099;
+            border-radius: 0%;
+            border-bottom: 2px solid #015099;
+        }
     }
     .namebar{
         overflow: hidden;
@@ -138,23 +180,5 @@ form{
         width: 100%;
         font-size: 200%;
         background: #a8a8a8;
-    }
-
-    #errormsg{
-        margin-top: 10%;
-        margin-right: 8%;
-        font-size: 130%;
-    }
-    #navbar{
-        overflow: hidden;
-        position: fixed;
-        bottom: 0px;
-        width: 100%;
-        font-size: 200%;
-        background: #a8a8a8;
-    }
-    #date{
-        display: inline;
-        margin-left: 1%;
     }
 }

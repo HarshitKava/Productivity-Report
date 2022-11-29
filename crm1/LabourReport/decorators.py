@@ -10,9 +10,9 @@ def unauthenticated_user(view_func):
                 return redirect('HomeAdmin')
             elif request.user.groups.all()[0].name == "Site Engineer":
                 return redirect('HomeSE')
-            elif request.user.groups.all()[0].name == "Site Labour Incahrge":
+            elif request.user.groups.all()[0].name == "Site Labour Incharge":
                 return redirect('HomeSLI')
-            elif request.user.groups.all()[0].name == "Camp Labour Incahrge":
+            elif request.user.groups.all()[0].name == "Camp Labour Incharge":
                 return redirect('HomeCLI')
             elif request.user.groups.all()[0].name == "Management":
                 return redirect('HomeMang')

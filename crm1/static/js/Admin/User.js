@@ -2,10 +2,13 @@ var n =  new Date();
 var y = n.getFullYear();
 var m = n.getMonth() + 1;
 var d = n.getDate();
-document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
 setPass();
-
 function setPass(){
+    // change type to text
+    document.getElementById("id_email").autocomplete="on";
+    // add required attribute
+    document.getElementById("id_email").required=true;
+    console.log(document.getElementById("id_email").value);
     document.getElementById("id_password1").value="urc12345";
     document.getElementById("id_password2").value="urc12345";
     document.getElementById("id_groups").removeAttribute("multiple");
@@ -32,7 +35,3 @@ function confirmPass() {
         document.getElementById("errormsg").innerHTML="Passwords are not same.";
     }
 }
-function goBack(){ 
-    location.replace("../admin.php?v="+n.getTime()+"&n="+document.getElementById("nam").innerHTML+"&l="+document.getElementById("area").innerHTML);
-};
-document.querySelector(".bkbtn").addEventListener("click",goBack);

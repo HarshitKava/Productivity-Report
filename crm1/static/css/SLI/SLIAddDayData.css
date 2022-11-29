@@ -1,82 +1,79 @@
 
-select{
-    margin-bottom: 5%;
-}
+
 .invisible{
     visibility: hidden;
 }
-.namebar{
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    font-size: 200%;
-    background: #a8a8a8;
-}
-.typeOfLabour{
-    display: block;
-    visibility: visible;
-    margin-bottom: 0%;
-    font-size: 80%;
-}
 
 .submitbtn{
-    border: 0px; 
-    color: #ffffff;
-    background-color: #a8a8a8;
-}
-.bkbtn{
-    float: right;
-    margin-right: 2%;
+    height: 4%;
     border: 0px;
     color: #ffffff;
     background-color: #a8a8a8;
 }
+select{
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    background-color: transparent;
+    color: #008837;
+    border-bottom:1px solid #015099;
+}
 
-#selectContractor{
-    margin-bottom: 10%;
-}
-#id_NoLabor, #id_NoHelp{   
+input[type="number"],input[type="number"]::-webkit-inner-spin-button{
+    appearance: none;
     width: 100%;
+    height: 100%;
+    border: 0px;
+    background-color: transparent;
+    color: #008837;
+    border-bottom:1px solid #015099;
+    appearance: textfield;
 }
-#navbar{
-    overflow: hidden;
-    position: fixed;
-    bottom: 0px;
+input[type="number"]:focus{
+    outline: none;
+    
+}
+
+#id_NoLabor, #id_NoHelp{
     width: 100%;
-    font-size: 200%;
-    background: #a8a8a8;
-}
-#date{
-    display: inline;
-    margin-left: 2%;
-}
-#extra{
-    margin-top: 0%;
-    margin-left: 30%;
-    float: bottom;
-    visibility: hidden;
 }
 #display {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  margin-top: 15%;
-  margin-bottom:20%;
-  width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10%;
+    /* margin-left: 2.5%; */
+    width: 100%;
+  }
+  
+  #display td, #display th {
+    border: 1px solid #000;
+    padding: 8px;
+  }
+
+  /* color for 1st tr */
+   
+  #display tr:nth-child(odd){background-color: #00883628;}
+  #display tr:nth-child(even){background-color: #01509928;}
+  #display tr th {
+    background-color: #7a7a7a;
+    color: white;
 }
+  /* #display tr:hover {background-color: rgb(255, 255, 255);} */
+  
+  #display th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+  }
 
-#display td, #display th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#display tr:nth-child(even){background-color: #f2f2f2;}
-
-#display tr:hover {background-color: #ddd;}
-
-#display th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: rgb(170, 170, 170);
-  color: white;
+/* Media screen for desktop */
+@media screen and (min-width: 800px) {
+        #display {
+            width: 80%;
+            margin-left: 10%;
+        }
+        #display td, #display th {
+            font-size: large;
+            border: 1px solid #ddd;
+            padding: 1%;
+        }
 }

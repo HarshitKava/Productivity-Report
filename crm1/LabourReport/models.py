@@ -6,25 +6,12 @@ from numpy import place
 
 # Create your models here.
 
+
+
 class Structure(models.Model):
     StructureName=models.CharField(max_length=200, null=True)
     def __str__(self):
         return self.StructureName
-
-class Staff (models.Model):
-    ROLE=(
-        ('Site Engineer','Site Engineer'),
-        ('Mangement','Mangement'),
-        ('Camp Labour Incharge','Camp Labour Incharge'),
-        ('Site Labour Incharge','Site Labour Incharge'),
-        ('Admin','Admin')
-    )
-    userid=models.CharField(max_length=200, null=True)
-    Name=models.CharField(max_length=200, null=True)
-    Role=models.CharField(max_length=200, null=True,choices=ROLE)
-    Location=models.CharField(max_length=200, null=True)
-    Password=models.CharField(max_length=200, null=True)
-    
 
 class Area(models.Model):
     AreaName=[
@@ -53,18 +40,13 @@ class Area(models.Model):
 class ContractorDetail(models.Model):
     ContractorName=models.CharField(max_length=200, null=True)
     ContractorNumber=models.IntegerField(null=True)
-    
     def __str__(self):
         return str(self.ContractorName)
-    
 
 class AddLabour(models.Model):
     LabourCategory=models.CharField(max_length=200, null=True)
-
     def __str__(self):
         return self.LabourCategory
-    
-
 
 
 class LabourOfContractor(models.Model):
@@ -74,12 +56,18 @@ class LabourOfContractor(models.Model):
     def __str__(self):
         return str(self.LabourCategory)
 
+class CategoryOfDeployment(models.Model):
+    ActivityName=models.ForeignKey(AddLabour,on_delete=models.CASCADE,null=True)
+    CategoryName=models.CharField(max_length=200, null=True)
+    def __str__(self):
+        return self.CategoryName
 
 class SiteEngDay (models.Model):
     Areaname=models.ForeignKey(Area, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now=True,null=True)
     ContractorName=models.ForeignKey('ContractorDetail', on_delete=models.CASCADE, null=True)
     LabourCategory=models.ForeignKey('LabourOfContractor', on_delete=models.CASCADE, null=True)
+    CategoryName=models.ForeignKey(CategoryOfDeployment,on_delete=models.CASCADE,null=True)
     StructureName=models.ForeignKey('Structure', on_delete=models.CASCADE, null=True)
     NoLabor=models.IntegerField(null=True)
     def __str__(self):
@@ -90,6 +78,7 @@ class SiteEngNight (models.Model):
     created_at = models.DateTimeField(auto_now=True,null=True)
     ContractorName=models.ForeignKey('ContractorDetail', on_delete=models.CASCADE, null=True)
     LabourCategory=models.ForeignKey('LabourOfContractor', on_delete=models.CASCADE, null=True)
+    CategoryName=models.ForeignKey(CategoryOfDeployment,on_delete=models.CASCADE,null=True)
     StructureName=models.ForeignKey(Structure,on_delete=models.CASCADE,null=True)
     NoLabor=models.IntegerField(null=True)
     def __str__(self):
@@ -100,8 +89,9 @@ class SLIDay (models.Model):
     created_at = models.DateTimeField(auto_now=True,null=True)
     ContractorName=models.ForeignKey('ContractorDetail', on_delete=models.CASCADE, null=True)
     LabourCategory=models.ForeignKey('LabourOfContractor', on_delete=models.CASCADE, null=True)
+    CategoryName=models.ForeignKey(CategoryOfDeployment,on_delete=models.CASCADE,null=True)
+    StructureName=models.ForeignKey('Structure', on_delete=models.CASCADE, null=True)
     NoLabor=models.IntegerField(null=True)
-    NoHelp=models.IntegerField(null=True)
     def __str__(self):
         return str(self.ContractorName)
 
@@ -110,8 +100,9 @@ class SLINight (models.Model):
     created_at = models.DateTimeField(auto_now=True,null=True)
     ContractorName=models.ForeignKey('ContractorDetail', on_delete=models.CASCADE, null=True)
     LabourCategory=models.ForeignKey('LabourOfContractor', on_delete=models.CASCADE, null=True)
+    CategoryName=models.ForeignKey(CategoryOfDeployment,on_delete=models.CASCADE,null=True)
+    StructureName=models.ForeignKey('Structure', on_delete=models.CASCADE, null=True)
     NoLabor=models.IntegerField(null=True)
-    NoHelp=models.IntegerField(null=True)
     def __str__(self):
         return str(self.ContractorName)
 
@@ -120,8 +111,9 @@ class CLIDay (models.Model):
     created_at = models.DateTimeField(auto_now=True,null=True)
     ContractorName=models.ForeignKey('ContractorDetail', on_delete=models.CASCADE, null=True)
     LabourCategory=models.ForeignKey('LabourOfContractor', on_delete=models.CASCADE, null=True)
+    CategoryName=models.ForeignKey(CategoryOfDeployment,on_delete=models.CASCADE,null=True)
+    StructureName=models.ForeignKey('Structure', on_delete=models.CASCADE, null=True)
     NoLabor=models.IntegerField(null=True)
-    NoHelp=models.IntegerField(null=True)
     def __str__(self):
         return str(self.ContractorName)
 
@@ -130,8 +122,9 @@ class CLINight (models.Model):
     created_at = models.DateTimeField(auto_now=True,null=True)
     ContractorName=models.ForeignKey('ContractorDetail', on_delete=models.CASCADE, null=True)
     LabourCategory=models.ForeignKey('LabourOfContractor', on_delete=models.CASCADE, null=True)
+    CategoryName=models.ForeignKey(CategoryOfDeployment,on_delete=models.CASCADE,null=True)
+    StructureName=models.ForeignKey('Structure', on_delete=models.CASCADE, null=True)
     NoLabor=models.IntegerField(null=True)
-    NoHelp=models.IntegerField(null=True)
     def __str__(self):
         return str(self.ContractorName)
 

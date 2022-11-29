@@ -1,120 +1,75 @@
 
-select{
-    margin-bottom: 5%;
-}
+
 .invisible{
     visibility: hidden;
 }
-.namebar{
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    font-size: 200%;
-    background: #a8a8a8;
-}
-.typeOfLabour{
-    display: block;
-    visibility: visible;
-    margin-bottom: 0%;
-    font-size: 80%;
-}
-table{
-    margin-bottom: 0px;
-}
 
 .submitbtn{
-    position: absolute;
-    font-size: 120%;
-    margin-top: -15%;
-    margin-bottom: 25%;
-    margin-left: 97%;
-    width: 18%;
     height: 4%;
     border: 0px;
     color: #ffffff;
     background-color: #a8a8a8;
 }
-.bkbtn{
-    float: right;
-    margin-right: 0%;
-    padding: 0% 1%;
-    border-radius: 5%;
+select{
+    width: 100%;
+    height: 100%;
     border: 0px;
-    color: #ffffff;
-    background-color: #a8a8a8;
-}
-.bkbtn:hover, .bkbtn:active{
-    background: #575457;
-    text-decoration: none;
-    color: white;
+    background-color: transparent;
+    color: #008837;
+    border-bottom:1px solid #015099;
 }
 
-#selectContractor{
-    margin-bottom: 10%;
-}
-#id_ContractorName, #id_LabourCategory{
-    display: inline;
-    position: absolute;
-    font-size: 120%;
-    width: 29.5%;
-    margin-top:-15%;
-}
-#id_LabourCategory{
-    margin-left: 30%;
-    width: 25%;
-}
-#id_NoLabor, #id_NoHelp{
-    position: absolute;
-    display:inline;
-    font-size: 120%;
-    width: 20.5%;
-    margin-top: -15%;
-    margin-left: 55.5% ;
-}
-#id_NoHelp{
-    width: 20%;
-    margin-top: -15%;
-    margin-left: 76% ;
-}
-#navbar{
-    overflow: hidden;
-    position: fixed;
-    bottom: 0px;
+input[type="number"],input[type="number"]::-webkit-inner-spin-button{
+    appearance: none;
     width: 100%;
-    font-size: 200%;
-    background: #a8a8a8;
+    height: 100%;
+    border: 0px;
+    background-color: transparent;
+    color: #008837;
+    border-bottom:1px solid #015099;
+    appearance: textfield;
 }
-#date{
-    display: inline;
-    margin-left: 2%;
-}
-#extra{
-    margin-top: 0%;
-    margin-left: 30%;
-    float: bottom;
-    visibility: hidden;
+
+#id_NoLabor, #id_NoHelp{
+    width: 100%;
 }
 #display {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  margin-top: 15%;
-  margin-bottom:0%;
-  width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 7.5%;
+    /* margin-left: 2.5%; */
+    width: 100%;
+  }
+  
+  #display td, #display th {
+    border: 1px solid #000;
+    padding: 8px;
+  }
+
+  /* color for 1st tr */
+   
+  #display tr:nth-child(odd){background-color: #00883628;}
+  #display tr:nth-child(even){background-color: #01509928;}
+  #display tr th {
+    background-color: #7a7a7a;
+    color: white;
 }
+  /* #display tr:hover {background-color: rgb(255, 255, 255);} */
+  
+  #display th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+  }
 
-#display td, #display th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#display tr:nth-child(even){background-color: #f2f2f2;}
-
-#display tr:hover {background-color: #ddd;}
-
-#display th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: rgb(170, 170, 170);
-  color: white;
+/* Media screen for desktop */
+@media screen and (min-width: 800px) {
+        #display {
+            width: 80%;
+            margin-left: 10%;
+        }
+        #display td, #display th {
+            font-size: large;
+            border: 1px solid #ddd;
+            padding: 1%;
+        }
 }

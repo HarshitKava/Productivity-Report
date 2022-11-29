@@ -13,17 +13,33 @@ class SiteEngDayForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['LabourCategory'].queryset = LabourOfContractor.objects.none()
-
+        self.fields['CategoryName'].queryset = LabourOfContractor.objects.none()
         if 'ContractorName' in self.data:
             try:
                 contractor_id = int(self.data.get('ContractorName'))
-                print("Cont id",contractor_id)
+                # print("Cont id",contractor_id)
                 self.fields['LabourCategory'].queryset = LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory')
-                print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
+                # print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
             except (ValueError, TypeError):
                 pass
         elif self.instance.pk:
             self.fields['LabourCategory'].queryset = self.instance.ContractorName.LabourCategory.order_by('LabourCategory')
+        
+        if 'LabourCategory' in self.data:
+            try:
+                contractor_id = int(self.data.get('LabourCategory'))
+                labour_name = LabourOfContractor.objects.get(id=contractor_id)
+                print(labour_name,type(labour_name),str(labour_name))
+                labour =AddLabour.objects.get(LabourCategory=labour_name)
+                print(labour,type(labour))
+                Category=CategoryOfDeployment.objects.filter(ActivityName=labour)
+                print("Cont id",contractor_id)
+                self.fields['CategoryName'].queryset = Category #CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName')
+                print(Category,CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName'))
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['CategoryName'].queryset = self.instance.LabourCategory.CategoryName.order_by('CategoryName')
         
         
 
@@ -35,18 +51,34 @@ class SiteEngNightForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['LabourCategory'].queryset = LabourOfContractor.objects.none()
-
+        self.fields['CategoryName'].queryset = LabourOfContractor.objects.none()
         if 'ContractorName' in self.data:
             try:
                 contractor_id = int(self.data.get('ContractorName'))
-                print("Cont id",contractor_id)
+                # print("Cont id",contractor_id)
                 self.fields['LabourCategory'].queryset = LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory')
-                print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
+                # print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
             except (ValueError, TypeError):
                 pass
         elif self.instance.pk:
             self.fields['LabourCategory'].queryset = self.instance.ContractorName.LabourCategory.order_by('LabourCategory')
-
+        
+        if 'LabourCategory' in self.data:
+            try:
+                contractor_id = int(self.data.get('LabourCategory'))
+                labour_name = LabourOfContractor.objects.get(id=contractor_id)
+                print(labour_name,type(labour_name),str(labour_name))
+                labour =AddLabour.objects.get(LabourCategory=labour_name)
+                print(labour,type(labour))
+                Category=CategoryOfDeployment.objects.filter(ActivityName=labour)
+                print("Cont id",contractor_id)
+                self.fields['CategoryName'].queryset = Category #CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName')
+                print(Category,CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName'))
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['CategoryName'].queryset = self.instance.LabourCategory.CategoryName.order_by('CategoryName')
+        
 class SLIDayForm(ModelForm):
     class Meta:
         model = SLIDay
@@ -55,18 +87,34 @@ class SLIDayForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['LabourCategory'].queryset = LabourOfContractor.objects.none()
-
+        self.fields['CategoryName'].queryset = LabourOfContractor.objects.none()
         if 'ContractorName' in self.data:
             try:
                 contractor_id = int(self.data.get('ContractorName'))
-                print("Cont id",contractor_id)
+                # print("Cont id",contractor_id)
                 self.fields['LabourCategory'].queryset = LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory')
-                print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
+                # print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
             except (ValueError, TypeError):
                 pass
         elif self.instance.pk:
             self.fields['LabourCategory'].queryset = self.instance.ContractorName.LabourCategory.order_by('LabourCategory')
-
+        
+        if 'LabourCategory' in self.data:
+            try:
+                contractor_id = int(self.data.get('LabourCategory'))
+                labour_name = LabourOfContractor.objects.get(id=contractor_id)
+                print(labour_name,type(labour_name),str(labour_name))
+                labour =AddLabour.objects.get(LabourCategory=labour_name)
+                print(labour,type(labour))
+                Category=CategoryOfDeployment.objects.filter(ActivityName=labour)
+                print("Cont id",contractor_id)
+                self.fields['CategoryName'].queryset = Category #CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName')
+                print(Category,CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName'))
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['CategoryName'].queryset = self.instance.LabourCategory.CategoryName.order_by('CategoryName')
+        
 class SLINightForm(ModelForm):
     class Meta:
         model = SLINight
@@ -75,18 +123,34 @@ class SLINightForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['LabourCategory'].queryset = LabourOfContractor.objects.none()
-
+        self.fields['CategoryName'].queryset = LabourOfContractor.objects.none()
         if 'ContractorName' in self.data:
             try:
                 contractor_id = int(self.data.get('ContractorName'))
-                print("Cont id",contractor_id)
+                # print("Cont id",contractor_id)
                 self.fields['LabourCategory'].queryset = LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory')
-                print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
+                # print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
             except (ValueError, TypeError):
                 pass
         elif self.instance.pk:
             self.fields['LabourCategory'].queryset = self.instance.ContractorName.LabourCategory.order_by('LabourCategory')
-
+        
+        if 'LabourCategory' in self.data:
+            try:
+                contractor_id = int(self.data.get('LabourCategory'))
+                labour_name = LabourOfContractor.objects.get(id=contractor_id)
+                print(labour_name,type(labour_name),str(labour_name))
+                labour =AddLabour.objects.get(LabourCategory=labour_name)
+                print(labour,type(labour))
+                Category=CategoryOfDeployment.objects.filter(ActivityName=labour)
+                print("Cont id",contractor_id)
+                self.fields['CategoryName'].queryset = Category #CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName')
+                print(Category,CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName'))
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['CategoryName'].queryset = self.instance.LabourCategory.CategoryName.order_by('CategoryName')
+        
 class CLIDayForm(ModelForm):
     class Meta:
         model = CLIDay
@@ -95,18 +159,34 @@ class CLIDayForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['LabourCategory'].queryset = LabourOfContractor.objects.none()
-
+        self.fields['CategoryName'].queryset = LabourOfContractor.objects.none()
         if 'ContractorName' in self.data:
             try:
                 contractor_id = int(self.data.get('ContractorName'))
-                print("Cont id",contractor_id)
+                # print("Cont id",contractor_id)
                 self.fields['LabourCategory'].queryset = LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory')
-                print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
+                # print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
             except (ValueError, TypeError):
                 pass
         elif self.instance.pk:
             self.fields['LabourCategory'].queryset = self.instance.ContractorName.LabourCategory.order_by('LabourCategory')
-
+        
+        if 'LabourCategory' in self.data:
+            try:
+                contractor_id = int(self.data.get('LabourCategory'))
+                labour_name = LabourOfContractor.objects.get(id=contractor_id)
+                print(labour_name,type(labour_name),str(labour_name))
+                labour =AddLabour.objects.get(LabourCategory=labour_name)
+                print(labour,type(labour))
+                Category=CategoryOfDeployment.objects.filter(ActivityName=labour)
+                print("Cont id",contractor_id)
+                self.fields['CategoryName'].queryset = Category #CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName')
+                print(Category,CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName'))
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['CategoryName'].queryset = self.instance.LabourCategory.CategoryName.order_by('CategoryName')
+        
 class CLINightForm(ModelForm):
     class Meta:
         model = CLINight
@@ -115,24 +195,44 @@ class CLINightForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['LabourCategory'].queryset = LabourOfContractor.objects.none()
-
+        self.fields['CategoryName'].queryset = LabourOfContractor.objects.none()
         if 'ContractorName' in self.data:
             try:
                 contractor_id = int(self.data.get('ContractorName'))
-                print("Cont id",contractor_id)
+                # print("Cont id",contractor_id)
                 self.fields['LabourCategory'].queryset = LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory')
-                print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
+                # print(LabourOfContractor.objects.filter(ContractorName_id=contractor_id).order_by('LabourCategory'))
             except (ValueError, TypeError):
                 pass
         elif self.instance.pk:
             self.fields['LabourCategory'].queryset = self.instance.ContractorName.LabourCategory.order_by('LabourCategory')
-
+        
+        if 'LabourCategory' in self.data:
+            try:
+                contractor_id = int(self.data.get('LabourCategory'))
+                labour_name = LabourOfContractor.objects.get(id=contractor_id)
+                print(labour_name,type(labour_name),str(labour_name))
+                labour =AddLabour.objects.get(LabourCategory=labour_name)
+                print(labour,type(labour))
+                Category=CategoryOfDeployment.objects.filter(ActivityName=labour)
+                print("Cont id",contractor_id)
+                self.fields['CategoryName'].queryset = Category #CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName')
+                print(Category,CategoryOfDeployment.objects.filter(ActivityName_id=contractor_id).order_by('CategoryName'))
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['CategoryName'].queryset = self.instance.LabourCategory.CategoryName.order_by('CategoryName')
+        
 
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','email','groups','password1','password2']
-
+        widgets = {
+            'email': forms.TextInput(attrs={'required': 'true', 'type': 'email'}),
+            # remove multiple choice widget for groups
+            # 'groups': forms.Select(attrs={'multiple': False}),
+            }
 class AddCont(ModelForm):
     class Meta:
         model = ContractorDetail

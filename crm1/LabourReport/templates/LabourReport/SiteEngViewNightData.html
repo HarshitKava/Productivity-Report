@@ -1,59 +1,44 @@
+{% extends 'LabourReport/NavbarLR.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>URC Construction</title>
-        <link rel="icon" type="image/x-icon" href="https://www.urcindia.com/img/favicon.ico">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% block css %}
         <link rel="stylesheet" href="{% static '/css/SiteEngViewDayData.css' %}">
-    </head>
-  <body>
-    <nav style="z-index: 1; top:0px;" class="namebar" ><p style="display: inline;" id="nam">{{ request.user }}</p>-<p style="display: inline;" id="area">{{Areaname}}</p><div id="ar_id" style="visibility: hidden;display: none;" >{{Areaname_id}}</div></nav>
-    <table id='display' style='font-size:120%;'>
-      <tr>
-        <th>Date & Time</th>
-        <th>Contractor Name</th>
-        <th>Labour Category</th>
-        <th>No. of Labour</th>
-        <th>No. of Helper</th>
-      </tr>
-      {% for i in Report %}
-      <tr>
-        <td>{{ i.created_at }}</td>
-        <td>{{ i.ContractorName }}</td>
-        <td>{{ i.LabourCategory }}</td>
-        <td>{{ i.NoLabor }}</td>
-        <td>{{ i.NoHelp }}</td>
-        
-      </tr>
-      {% endfor %}
-      
-        
-    </table>
-    <!-- <form action="" id="form" method="POST" data-labour-url="{% url 'ajax_load_labour' %}">
-      {% csrf_token %}
-      <div style="visibility: hidden ;">
-      {{form.Areaname}}
-      </div>
-        {{form.ContractorName}}
-        {{form.LabourCategory}}
-        {{form.NoLabor}}
-        {{form.NoHelp}}
-            
-          <input type="submit" name="submit" class="submitbtn">
-    </form> -->
-    <div style="z-index: 1;" id="navbar"><p id="date"></p>
-    <a href="{% url 'HomeSE' %}" class="bkbtn">Home</a></div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="{% static '/js/form.js' %}" async defer></script>
-    <script>
+        {% endblock %}
+        {% block LRLink %}<a class="nav-link active" href="{% url 'HomeSE' %}">Labour Report</a>{% endblock %}
+        {% block PRLink %}<a class="nav-link" href="{% url 'HomeSEProRepo' %}">Productivity Report</a>{% endblock %}
+        {% block content %}
+      <table id='display' style='font-size:120%;'>
+        <tr>
+          <th colspan="6" align="center" ><center>Last 5-Days Data</center></th>
+        </tr>
+        <tr>
+          <th>Date and Time</th>
+          <th>Contractor Name</th>
+          <th>Labour Category</th>
+          <th>Structure</th>
+          <th>Category of Deployment</th>
+          <th>Deployment</th>
+        </tr>
+        {% if Report %}
+        {% for i in Report %}
+        <tr>
+          <td>{{ i.created_at }}</td>
+          <td>{{ i.ContractorName }}</td>
+          <td>{{ i.LabourCategory }}</td>
+          <td>{{ i.CategoryName }}</td>
+          <td>{{ i.StructureName }}</td>
+          <td>{{ i.NoLabor }}</td>
+          
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td colspan="6" align="center">No Data Found</td>
+        </tr>
+        {% endif %}
+      </table>{% endblock %}
+      {% block bkbtn %}<a href="{% url 'HomeSE' %}" class="back">Home</a>{% endblock %}
+      {% block js %}<script src="{% static '/js/form.js' %}" async defer></script>
+      {% endblock %}<!-- <script>
         
         $("#id_ContractorName").change(function(){
           console.log("changed");
@@ -73,4 +58,4 @@
 
     </script>
   </body>
-</html>
+</html> -->

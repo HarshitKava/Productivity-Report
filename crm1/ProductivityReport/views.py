@@ -47,7 +47,8 @@ def HomeSEProRepo(request):
 
 @login_required(login_url='Login')
 @allowed_users(allowed_roles=['Site Engineer'])
-def SEAddProRepo(request):
+def SEAddProRepo(request,i):
+
     Form=ProductivityReportForm()
     current_user = request.user
     Areaname = Area.objects.filter(Username=current_user.username)
@@ -59,24 +60,62 @@ def SEAddProRepo(request):
     d2=tomorrow.strftime("%Y-%m-%d")
     d1 = today.strftime("%Y-%m-%d")
     # print("type(d".id),d1,d2)
-    Report=ProductivityReport.objects.filter(Areaname=Areaname_id,created_at__range=[d1,d2])
+    Report=SiteEngDay.objects.filter(id=i)
+    # print(request.method)
+    Form=ProductivityReportForm()
     if request.method=='POST':
         Form=ProductivityReportForm(request.POST)
         # find error in Form
+        # fill the empty fields
         print(request.POST)
-        for i in Form.errors:
-            print(i)
-        Form.save()
-        return redirect('SEAddProRepo')
+        new_data=request.POST.copy()
+        if Form.errors:
+            new_data=request.POST.copy()
+            for i in Form.errors:
+                new_data[i]="1"
+        Form=ProductivityReportForm(new_data)
+        if Form.is_valid():
+            if ProductivityReport.objects.filter(LRid=request.POST['LRid']):
+                data=ProductivityReport.objects.filter(LRid=request.POST['LRid'])
+                data.delete()
+            Form.save()
+        return redirect('SEAddProRepo1')
     return render(request,'ProductivityReport/SE/SEAddDayProRepo.html',{'Form':Form,'Report':Report,'Areaname':Areaname,'Areaname_id':Areaname_id,'d1':d1,'d2':d2})
 
 @login_required(login_url='Login')
 @allowed_users(allowed_roles=['Site Engineer'])
-def SEViewDayProRepo(request):
+def SEAddProRepo1(request):
     current_user = request.user
     Areaname = Area.objects.filter(Username=current_user.username)
     Areaname_id=Areaname[0].id
-    Report=ProductivityReport.objects.filter(Areaname=Areaname_id)
+    Areaname = Areaname[0].AreaName
+    today = datetime.now()
+    tomorrow = today + timedelta(1)
+    d2=tomorrow.strftime("%Y-%m-%d")
+    d1 = today.strftime("%Y-%m-%d")
+    # print("d",d1,d2)
+    ProReport=ProductivityReport.objects.filter()
+    LRids=ProductivityReport.objects.filter().values('LRid').distinct()
+    LRids=list(LRids)
+    LRids=[i['LRid'] for i in LRids]
+    print(LRids)
+    # print(ProReport)
+    Report=SiteEngDay.objects.filter(created_at__range=[d1,d2],Areaname=Areaname_id)
+    return render(request,'ProductivityReport/SE/SEAddDayProRepo_1.html',{'LRids':LRids,'ProReport':ProReport,'Report':Report,'Areaname':Areaname,'Areaname_id':Areaname_id,'d1':d1,'d2':d2})
+
+@login_required(login_url='Login')
+@allowed_users(allowed_roles=['Site Engineer'])
+def SEViewDayProRepo(request):
+    today = datetime.now()
+    today = today + timedelta(1)
+    tomorrow = today - timedelta(5)
+    d2=tomorrow.strftime("%Y-%m-%d")
+    d1 = today.strftime("%Y-%m-%d")
+    print(d1,d2)
+    current_user = request.user
+    Areaname = Area.objects.filter(Username=current_user.username)
+    Areaname_id=Areaname[0].id
+    Report=ProductivityReport.objects.filter(Areaname=Areaname_id,created_at__range=[d2,d1])
     return render(request,'ProductivityReport/SE/SEViewDayProRepo.html',{'Report':Report,'Areaname':Areaname,'Areaname_id':Areaname_id})
 
 @login_required(login_url='Login')
@@ -115,7 +154,7 @@ def SEAddNightProRepo(request):
     d2=tomorrow.strftime("%Y-%m-%d")
     d1 = today.strftime("%Y-%m-%d")
     # print("d",d1,d2)
-    Report=ProductivityNightReport.objects.filter()
+    Report=ProductivityNightReport.objects.filter(Areaname=Areaname_id,created_at__range=[d1,d2])
     if request.method=='POST':
         Form=ProductivityNightReportForm(request.POST)
         if Form.is_valid():
@@ -125,11 +164,39 @@ def SEAddNightProRepo(request):
 
 @login_required(login_url='Login')
 # @allowed_users(allowed_roles=['Site Engineer'])
-def load_ProRepo_labour(request):
-    contractor_id = request.GET.get('contractor_id')
-    contractor_name = ContractorDetail.objects.filter(id=contractor_id)
-    labourofCont=LabourOfContractor.objects.filter(ContractorName=list(contractor_name)[0])
-    return render(request, 'LabourReport/Admin/labour_dropdown_list_options.html', {'labourofCont': labourofCont})
+def ajax_load_Contractor(request):
+    today = datetime.now()
+    tomorrow = today + timedelta(1)
+    d2=tomorrow.strftime("%Y-%m-%d")
+    d1 = today.strftime("%Y-%m-%d")
+    # get user area
+    current_user = request.user
+    Areaname = Area.objects.filter(Username=current_user.username)
+    Area_id=Areaname[0].id
+    Areaname = Areaname[0].AreaName
+    Structure_id = request.GET.get('contractor_id')
+    print(Structure_id)
+    Contractor = SiteEngDay.objects.filter(Areaname_id=Area_id,StructureName_id=Structure_id,created_at__range=[d1,d2]).distinct()
+    print(Contractor,Contractor[0].ContractorName)
+    return render(request, 'ProductivityReport/contractor_list_options.html', {'data': Contractor})
+
+@login_required(login_url='Login')
+# @allowed_users(allowed_roles=['Site Engineer'])
+def ajax_load_LabCat(request):
+    today = datetime.now()
+    tomorrow = today + timedelta(1)
+    d2=tomorrow.strftime("%Y-%m-%d")
+    d1 = today.strftime("%Y-%m-%d")
+    # get user area
+    current_user = request.user
+    Areaname = Area.objects.filter(Username=current_user.username)
+    Area_id=Areaname[0].id
+    Areaname = Areaname[0].AreaName
+    Contractor_id = request.GET.get('contractor_id')
+    Structure_id = request.GET.get('structure_id')
+    print(Contractor_id,Structure_id)
+    return render(request, 'ProductivityReport/labcat_list_options.html')#, {'data': Contractor})
+
 
 @login_required(login_url='Login')
 # @allowed_users(allowed_roles=['Site Engineer'])
